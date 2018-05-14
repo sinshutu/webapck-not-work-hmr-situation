@@ -1,0 +1,10 @@
+version: '2'
+services:
+  js:
+    build: .
+    ports:
+      - 8080:8080
+    command: bash -c "npm run dev"
+    volumes:
+      - .:/app
+      - /app/client/node_modules
