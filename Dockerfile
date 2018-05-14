@@ -15,3 +15,4 @@ RUN apt-get update -qq  \
 COPY package.json /app/client/package.json
 
 RUN npm install --no-progress --registry http://registry.npmjs.org/
+RUN npm install -g http-server
