@@ -1,14 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  output: {
+    path: __dirname,
+    filename: 'bundle.js',
+    publicPath: 'http://localhost:8080/'
+  },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     hot: true,
     host: "0.0.0.0",
     port: 8080,
+    headers: {
+        'Access-Control-Allow-Origin': '*'
+    }
   },
   module: {
     rules: [
@@ -42,10 +49,6 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
-    })
   ],
   resolve: {
     alias: {
